@@ -1,0 +1,37 @@
+.task_list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 20%;
+  padding: 24px;
+  background-color: #262626;
+  border-radius: 16px;
+  gap: 16px;
+  height: fit-content;
+}
+
+.add_card {
+  width: 100%;
+  background-color: initial;
+  border: none;
+  color: #494545;
+  text-align: left;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.add_card:hover {
+  background-color: #2c2a2a;
+  color: #625d5d;
+  cursor: pointer;
+}
+
+.add_card_form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+textarea {
+  color: white !important;
+}

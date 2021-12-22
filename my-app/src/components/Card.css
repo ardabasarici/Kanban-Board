@@ -1,0 +1,49 @@
+.card {
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12), 0px 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+.card_header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_title {
+  flex-grow: 1;
+}
+
+.card_description {
+  margin-top: 8px;
+}
+
+#filled-basic-label {
+  color: rgb(98, 98, 98) !important;
+}
+
+.button_holder {
+  filter: brightness(90%);
+}
+
+.card_tags {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 2px 5px;
+  margin: 14px 10px 0 0;
+}
+
+.card_tags > button > svg {
+  font-size: 0.7em !important;
+}
+
+span > form > .MuiTextField-root > div {
+  width: 100px;
+  height: 35px;
+  border-radius: 0;
+  top: 9px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+span > form {
+  display: inline;
+}

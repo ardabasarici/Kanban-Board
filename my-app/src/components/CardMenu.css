@@ -1,0 +1,5 @@
+div.MuiPopover-paper {
+  background-color: #494545;
+  color: white;
+  min-width: fit-content;
+}
