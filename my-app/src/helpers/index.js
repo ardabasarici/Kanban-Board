@@ -8,12 +8,12 @@ const randomColor = () => {
 
 const createCard = (title, description, category) => {
   return {
-    cardTitle: title,
-    cardDescription: description,
-    cardColor: randomColor(),
-    cardDate: new Date(),
-    cardId: uuid(),
-    cardCategory: category,
+    title: title,
+    description: description,
+    color: randomColor(),
+    date: new Date(),
+    id: uuid(),
+    category: category,
   };
 };
 

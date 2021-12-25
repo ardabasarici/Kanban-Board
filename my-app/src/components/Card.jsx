@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from "react";
-import { reducer } from "../hooks/reducer.js";
+import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import "./Card.css";
 import CardMenu from "./CardMenu.jsx";
@@ -8,26 +7,14 @@ import ClearIcon from "@mui/icons-material/Clear";
 import TextField from "@mui/material/TextField";
 import { itemTypes } from "../helpers";
 import { useDrag } from "react-dnd";
+import { useStateValue } from "../hooks";
 
-const Card = ({ title, description, color, date, id, category, props }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    cardTitle: title,
-    cardDescription: description,
-    cardColor: color,
-    cardTags: [],
-    cardDate: date,
-    cardId: id,
-    cardCategory: category,
-  });
-
-  const { cards, setCards } = props;
-
+const Card = ({ title, description, color, id, tags, category, index }) => {
   const [addingTag, setAddingTag] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
   const [editingDescription, setEditingDescription] = useState(false);
 
-  const { cardTitle, cardColor, cardDescription, cardTags } = state;
-
+  const [{ cards }, dispatch] = useStateValue();
   //For Drag and Drop
 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -41,7 +28,7 @@ const Card = ({ title, description, color, date, id, category, props }) => {
     <div
       className="card"
       ref={drag}
-      style={{ backgroundColor: cardColor, opacity: isDragging ? 0.5 : 1 }}
+      style={{ backgroundColor: color, opacity: isDragging ? 0.5 : 1 }}
     >
       <div className="card_header">
         {editingTitle ? (
@@ -53,6 +40,7 @@ const Card = ({ title, description, color, date, id, category, props }) => {
               dispatch({
                 type: "EDIT_TITLE",
                 payload: event.currentTarget[0].value,
+                id: id,
               });
             }}
           >
@@ -61,20 +49,17 @@ const Card = ({ title, description, color, date, id, category, props }) => {
               label="Title"
               variant="filled"
               color="secondary"
-              defaultValue={cardTitle}
+              defaultValue={title}
             />
           </form>
         ) : (
-          <h3 className="card_title">{cardTitle}</h3>
+          <h3 className="card_title">{title}</h3>
         )}
         <CardMenu
           props={{
             setAddingTag,
             setEditingTitle,
             setEditingDescription,
-            dispatch,
-            cards,
-            setCards,
             id,
           }}
         />
@@ -89,6 +74,7 @@ const Card = ({ title, description, color, date, id, category, props }) => {
             dispatch({
               type: "EDIT_DESCRIPTION",
               payload: event.currentTarget[0].value,
+              id: id,
             });
           }}
         >
@@ -97,19 +83,23 @@ const Card = ({ title, description, color, date, id, category, props }) => {
             label="Description"
             variant="filled"
             color="secondary"
-            defaultValue={cardDescription}
+            defaultValue={description}
           />
         </form>
       ) : (
-        <p className="card_description">{cardDescription}</p>
+        <p className="card_description">{description}</p>
       )}
-      {cardTags.map((tag) => {
+      {tags.map((tag) => {
         return (
           <span className="card_tags" key={uuid()}>
             {tag}
             <IconButton
               onClick={(event) =>
-                dispatch({ type: "CLEAR_TAG", payload: event.currentTarget.id })
+                dispatch({
+                  type: "CLEAR_TAG",
+                  payload: event.currentTarget.id,
+                  id: id,
+                })
               }
               className="card_edit"
               size="small"
@@ -130,6 +120,7 @@ const Card = ({ title, description, color, date, id, category, props }) => {
               dispatch({
                 type: "ADD_TAG",
                 payload: event.currentTarget[0].value,
+                id: id,
               });
             }}
           >

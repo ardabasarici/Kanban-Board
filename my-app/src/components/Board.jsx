@@ -5,6 +5,7 @@ import "./Board.css";
 //for Drag and Drop
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { reducer, StateProvider } from "../hooks";
 
 const Board = () => {
   const [title, setTitle] = useState("Roadmap");
@@ -16,15 +17,17 @@ const Board = () => {
   ]);
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="board">
-        <h1 className="board_title">{title}</h1>
-        <div className="task_list_holder">
-          {taskLists.map((TaskListTitle) => {
-            return <TaskList title={TaskListTitle} key={uuid()} />;
-          })}
-          {/*<button className="add_task_list">+add another list</button>*/}
+      <StateProvider initialState={{ cards: [] }} reducer={reducer}>
+        <div className="board">
+          <h1 className="board_title">{title}</h1>
+          <div className="task_list_holder">
+            {taskLists.map((TaskListTitle) => {
+              return <TaskList title={TaskListTitle} key={uuid()} />;
+            })}
+            {/*<button className="add_task_list">+add another list</button>*/}
+          </div>
         </div>
-      </div>
+      </StateProvider>
     </DndProvider>
   );
 };

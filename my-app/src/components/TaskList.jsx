@@ -6,40 +6,49 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { v4 as uuid } from "uuid";
 import { useDrop } from "react-dnd";
+import { useStateValue } from "../hooks";
 
 const TaskList = ({ title }) => {
-  const [cards, setCards] = useState([]);
   const [addingCard, setAddingCard] = useState(false);
+
+  const [{ cards }, dispatch] = useStateValue();
 
   //For Drag and Drop:
 
   return (
     <div className="task_list">
       <h2 className="task_list_title">{title}</h2>
-      {cards.map((card) => {
-        return (
-          <Card
-            title={card.cardTitle}
-            description={card.cardDescription}
-            color={card.cardColor}
-            date={card.cardDate}
-            id={card.cardId}
-            props={{ cards, setCards }}
-            key={uuid()}
-          />
-        );
-      })}
+      {console.log(cards)}
+      {cards
+        .map((card, index) => {
+          return (
+            <Card
+              title={card.title}
+              description={card.description}
+              color={card.color}
+              date={card.date}
+              id={card.id}
+              category={card.category}
+              index={index}
+              tags={card.tags}
+              key={uuid()}
+            />
+          );
+        })
+        .filter((card) => card.props.category === title)}
       {addingCard ? (
         <form
           className="add_card_form"
           onSubmit={(e) => {
             e.preventDefault();
-            setCards([
-              ...cards,
-              createCard(e.currentTarget[0].value, e.currentTarget[2].value, {
-                title,
-              }),
-            ]);
+            dispatch({
+              type: "ADD_CARD",
+              payload: createCard(
+                e.currentTarget[0].value,
+                e.currentTarget[2].value,
+                title
+              ),
+            });
             setAddingCard(false);
           }}
         >

@@ -4,20 +4,16 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./CardMenu.css";
-import { deleteCard, colors } from "../helpers";
+import { colors } from "../helpers";
+import { useStateValue } from "../hooks";
 
 const CardMenu = ({ props }) => {
-  const {
-    setAddingTag,
-    setEditingTitle,
-    setEditingDescription,
-    cards,
-    setCards,
-    id,
-    dispatch,
-  } = props;
+  const [{ cards }, dispatch] = useStateValue();
+  const { setAddingTag, setEditingTitle, setEditingDescription, id } = props;
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
   const [colorsAnchorEl, setColorsAnchorEl] = useState(null);
   const [colorsIsOpen, setColorsIsOpen] = useState(false);
 
@@ -67,7 +63,7 @@ const CardMenu = ({ props }) => {
 
   const handleClickDelete = () => {
     handleCloseMenu();
-    deleteCard(cards, setCards, id);
+    dispatch({ type: "DELETE_CARD", id: id });
   };
 
   return (
@@ -121,7 +117,7 @@ const CardMenu = ({ props }) => {
         <MenuItem
           onClick={() => {
             handleCloseColorMenu();
-            dispatch({ type: "EDIT_COLOR", payload: colors[0] });
+            dispatch({ type: "EDIT_COLOR", payload: colors[0], id: id });
           }}
         >
           <div
@@ -136,7 +132,7 @@ const CardMenu = ({ props }) => {
         <MenuItem
           onClick={() => {
             handleCloseColorMenu();
-            dispatch({ type: "EDIT_COLOR", payload: colors[1] });
+            dispatch({ type: "EDIT_COLOR", payload: colors[1], id: id });
           }}
         >
           <div
@@ -151,7 +147,7 @@ const CardMenu = ({ props }) => {
         <MenuItem
           onClick={() => {
             handleCloseColorMenu();
-            dispatch({ type: "EDIT_COLOR", payload: colors[2] });
+            dispatch({ type: "EDIT_COLOR", payload: colors[2], id: id });
           }}
         >
           <div
@@ -166,7 +162,7 @@ const CardMenu = ({ props }) => {
         <MenuItem
           onClick={() => {
             handleCloseColorMenu();
-            dispatch({ type: "EDIT_COLOR", payload: colors[3] });
+            dispatch({ type: "EDIT_COLOR", payload: colors[3], id: id });
           }}
         >
           <div
@@ -181,7 +177,7 @@ const CardMenu = ({ props }) => {
         <MenuItem
           onClick={() => {
             handleCloseColorMenu();
-            dispatch({ type: "EDIT_COLOR", payload: colors[4] });
+            dispatch({ type: "EDIT_COLOR", payload: colors[4], id: id });
           }}
         >
           <div
