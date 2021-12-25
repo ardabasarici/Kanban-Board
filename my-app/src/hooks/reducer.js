@@ -77,7 +77,6 @@ const reducer = (state, action) => {
       //return { ...state, cardColor: action.payload };
     }
     case "ADD_CARD": {
-      console.log(action.payload);
       return {
         ...state,
         cards: [
@@ -92,6 +91,12 @@ const reducer = (state, action) => {
             tags: [],
           },
         ],
+      };
+    }
+    case "DELETE_CARD": {
+      return {
+        ...state,
+        cards: state.cards.filter((card) => card.id !== action.id),
       };
     }
     default:
