@@ -47,3 +47,8 @@ span > form > .MuiTextField-root > div {
 span > form {
   display: inline;
 }
+
+.dropable_div {
+  height: 16px;
+  width: 100%;
+}

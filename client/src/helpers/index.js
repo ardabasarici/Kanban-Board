@@ -17,14 +17,21 @@ const createCard = (title, description, category) => {
   };
 };
 
-const deleteCard = (cards, setCards, id) => {
-  setCards(cards.filter((card) => card.cardId !== id));
-};
-
 // For Drag and Drop
+const index = (category, cards) => {
+  let arr = cards.map((card, index) => {
+    if (card.category === category) {
+      return index + 1;
+    } else {
+      return 0;
+    }
+  });
+  console.log(arr);
+  return Math.max(...arr);
+};
 
 const itemTypes = {
   CARD: "card",
 };
 
-export { randomColor, colors, createCard, deleteCard, itemTypes };
+export { randomColor, colors, createCard, itemTypes, index };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card.jsx";
 import "./TaskList.css";
-import { createCard, itemTypes } from "../helpers";
+import { createCard, itemTypes, index } from "../helpers";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { v4 as uuid } from "uuid";
@@ -10,15 +10,28 @@ import { useStateValue } from "../hooks";
 
 const TaskList = ({ title }) => {
   const [addingCard, setAddingCard] = useState(false);
-
   const [{ cards }, dispatch] = useStateValue();
 
   //For Drag and Drop:
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: itemTypes.CARD,
+    drop: (item) => {
+      dispatch({ type: "CHANGE_CATEGORY", id: item.id, category: title });
+      dispatch({
+        type: "SET_NEW_POSITION",
+        index: index(title, cards),
+        id: item.id,
+      });
+      dispatch({ type: "DELETE_CARD", id: item.id });
+    },
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
 
   return (
     <div className="task_list">
       <h2 className="task_list_title">{title}</h2>
-      {console.log(cards)}
       {cards
         .map((card, index) => {
           return (
@@ -36,6 +49,20 @@ const TaskList = ({ title }) => {
           );
         })
         .filter((card) => card.props.category === title)}
+      <div
+        className="dropable_div"
+        ref={drop}
+        style={
+          isOver
+            ? {
+                border: "1px solid gray",
+                height: "120px",
+                margin: "3px 0",
+                borderRadius: "8px",
+              }
+            : null
+        }
+      ></div>
       {addingCard ? (
         <form
           className="add_card_form"
