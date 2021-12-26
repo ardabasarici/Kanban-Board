@@ -19,7 +19,7 @@ const TaskList = ({ title }) => {
       dispatch({ type: "CHANGE_CATEGORY", id: item.id, category: title });
       dispatch({
         type: "SET_NEW_POSITION",
-        index: index(title, cards),
+        index: index(title, item.cards.cards),
         id: item.id,
       });
       dispatch({ type: "DELETE_CARD", id: item.id });

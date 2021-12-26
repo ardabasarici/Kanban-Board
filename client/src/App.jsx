@@ -1,10 +1,13 @@
 import Board from "./components/Board.jsx";
 import "./App.css";
+import { reducer, StateProvider } from "./hooks";
 
 function App() {
   return (
     <div className="container">
-      <Board />
+      <StateProvider initialState={{ cards: [] }} reducer={reducer}>
+        <Board />
+      </StateProvider>
     </div>
   );
 }

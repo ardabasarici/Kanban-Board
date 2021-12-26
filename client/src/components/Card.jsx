@@ -14,12 +14,12 @@ const Card = ({ title, description, color, id, tags, category, index }) => {
   const [editingTitle, setEditingTitle] = useState(false);
   const [editingDescription, setEditingDescription] = useState(false);
 
-  const [, dispatch] = useStateValue();
+  const [cards, dispatch] = useStateValue();
   //For Drag and Drop
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: itemTypes.CARD,
-    item: { id: id },
+    item: { id: id, cards: cards },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

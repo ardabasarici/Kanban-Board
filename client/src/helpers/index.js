@@ -19,15 +19,15 @@ const createCard = (title, description, category) => {
 
 // For Drag and Drop
 const index = (category, cards) => {
-  let arr = cards.map((card, index) => {
+  let temp = cards.map((card, index) => {
     if (card.category === category) {
       return index + 1;
     } else {
       return 0;
     }
   });
-  console.log(arr);
-  return Math.max(...arr);
+  console.log(temp);
+  return Math.max(...temp);
 };
 
 const itemTypes = {
