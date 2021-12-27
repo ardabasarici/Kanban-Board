@@ -2,6 +2,12 @@ import { v4 as uuid } from "uuid";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "SET_CARDS": {
+      return {
+        ...state,
+        cards: action.payload,
+      };
+    }
     case "CLEAR_TAG": {
       return {
         ...state,
