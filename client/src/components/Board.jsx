@@ -11,7 +11,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 //for backend
-import { getData, sendData } from "../api.js";
+import { getData, sendData } from "../api";
 import { useStateValue } from "../hooks";
 
 const Board = () => {
