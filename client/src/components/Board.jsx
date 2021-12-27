@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList.jsx";
 import { v4 as uuid } from "uuid";
 import "./Board.css";
 import { useParams } from "react-router-dom";
+import HelpIcon from "@mui/icons-material/Help";
+import Tooltip from "@mui/material/Tooltip";
+
 //for Drag and Drop
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+
+//for backend
 import { getData, sendData } from "../api.js";
 import { useStateValue } from "../hooks";
-import { useEffect } from "react";
 
 const Board = () => {
   const [boardId] = useState(useParams().boardId || uuid());
@@ -34,7 +38,17 @@ const Board = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="board">
-        <h1 className="board_title">{title}</h1>
+        <h1 className="board_title">
+          {title}
+          <Tooltip
+            sx={{ marginLeft: "20px" }}
+            title={"Click to copy id:  " + boardId}
+            arrow
+            onClick={() => navigator.clipboard.writeText(boardId)}
+          >
+            <HelpIcon />
+          </Tooltip>
+        </h1>
         <div className="task_list_holder">
           {taskLists.map((TaskListTitle) => {
             return <TaskList title={TaskListTitle} key={uuid()} />;
