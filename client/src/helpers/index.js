@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import store from "store";
 
 const colors = ["#C440A1", "#6A6DCD", "#D93535", "#307FE2", "#00A88B"];
 
@@ -18,6 +19,11 @@ const createCard = (title, description, category) => {
 };
 
 // For Drag and Drop
+
+const itemTypes = {
+  CARD: "card",
+};
+
 const index = (category, cards) => {
   let temp = cards.map((card, index) => {
     if (card.category === category) {
@@ -26,12 +32,27 @@ const index = (category, cards) => {
       return 0;
     }
   });
-  console.log(temp);
   return Math.max(...temp);
 };
 
-const itemTypes = {
-  CARD: "card",
+//Save to local storage
+
+const saveToLocalStorage = (url) => {
+  if (!store.get("history", []).includes(url)) {
+    store.set("history", [...store.get("history", []), url]);
+  }
+  if (store.get("history", []).length > 5) {
+    let temp = [...store.get("history")];
+    temp.shift();
+    store.set("history", temp);
+  }
 };
 
-export { randomColor, colors, createCard, itemTypes, index };
+export {
+  randomColor,
+  colors,
+  createCard,
+  itemTypes,
+  index,
+  saveToLocalStorage,
+};
