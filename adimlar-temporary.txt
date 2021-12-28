@@ -12,6 +12,8 @@ Son olarak frontendde routing icin react-router-dom kutuphanesini ve son sayfala
 
 Note 1: Stylelar konusunda eksiklikler var, farkindayim. History buttonlari iyi gozukmuyor, birde cardlari editleme kisminda eksiklikler var style olarak ama zamanim olmadigi icin onlara daha fazla zaman ayirmak istemedim, cunku baska yerlerden de tasklar geliyor surekli. 
 
-Note 2: Responsivelik konuusunda cok fazla detay yoktu verilen taskta, hangi ekranlarda nasil goruncek seklinde. O yuzden figma verilen marginler ve fontsizelerin en mantikli gorundugu genislikten asagiya inmesini engelledim ekranin. Style konusunda detay verecek olursam, layout ile ilgili pek cok seyi flex-box kullanarak yapiyorum. 
+Note 2: Responsivelik konusunda cok fazla detay yoktu verilen taskta, hangi ekranlarda nasil goruncek seklinde. O yuzden figma verilen marginler ve fontsizelerin en mantikli gorundugu genislikten asagiya inmesini engelledim ekranin. Style konusunda detay verecek olursam, layout ile ilgili pek cok seyi flex-box kullanarak yaptim. 
 
-Note 3: Pek comment yazmadigimin farkindayim, fakat yazilan codun commentlerle aciklanmasindan ziyade buyuk oranda self-explanatory olmasi gerektigini dusunuyorum. En azindan kendimi bu yonde egitmeye calisiyorum. Fonksiyonlara, variablelara vs verdigim isimlere dikkat etmeye calistim buyuk oranda. Genel naming conventionlarini takip etmeye calisiyorum. 
+Note 3: Pek comment yazmadigimin farkindayim, fakat yazilan codun commentlerle aciklanmasindan ziyade buyuk oranda self-explanatory olmasi gerektigini dusunuyorum. En azindan kendimi bu yonde egitmeye calisiyorum. Fonksiyonlara, variablelara vs verdigim isimlere dikkat etmeye calistim buyuk oranda. Genel naming conventionlarini takip etmeye calisiyorum.
+
+Note 4: Bazi yerlerde codeda tekrara dustugumun ve daha iyi yazilabileceginin farkindayim, fakat dedigim gibi hem diger basvurdugum yerlerden gelen tasklar oldugu, hem de universitedeki gorevime devam ettigim icin zaman problemi yasadim. 
