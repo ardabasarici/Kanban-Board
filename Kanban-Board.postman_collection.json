@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "120963b4-39f3-4220-b71e-d11862f58f41",
+		"name": "Kanban-Board",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"12345"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"12345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"9a-QpmP3Bfm3JzzNr31abmokd6b6O0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Dec 2021 10:27:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"61cae014a03b32d0c174cc02\",\n    \"boardId\": \"12345\",\n    \"cards\": [\n        {\n            \"title\": \"test\",\n            \"description\": \"test\",\n            \"color\": \"red\",\n            \"date\": \"\",\n            \"id\": 11111,\n            \"category\": \"to do\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cards\": [\n        {\n            \"title\": \"test\",\n            \"description\": \"test\",\n            \"color\": \"red\",\n            \"date\": \"\",\n            \"id\": 11111,\n            \"category\": \"to do\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"12345"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cards\": [\n        {\n            \"title\": \"test\",\n            \"description\": \"test\",\n            \"color\": \"red\",\n            \"date\": \"\",\n            \"id\": 11111,\n            \"category\": \"to do\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"12345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"9a-QpmP3Bfm3JzzNr31abmokd6b6O0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Dec 2021 10:27:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"61cae014a03b32d0c174cc02\",\n    \"boardId\": \"12345\",\n    \"cards\": [\n        {\n            \"title\": \"test\",\n            \"description\": \"test\",\n            \"color\": \"red\",\n            \"date\": \"\",\n            \"id\": 11111,\n            \"category\": \"to do\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
