@@ -7,6 +7,7 @@ import { createBrowserHistory } from "history";
 import HelpIcon from "@mui/icons-material/Help";
 import Tooltip from "@mui/material/Tooltip";
 import { saveToLocalStorage } from "../helpers";
+import RecentPages from "./RecentPages.jsx";
 import store from "store";
 
 //for Drag and Drop
@@ -18,7 +19,7 @@ import { getData, sendData } from "../api";
 import { useStateValue } from "../hooks";
 
 const Board = () => {
-  const [boardId] = useState(useParams().boardId || uuid());
+  const [boardId, setBoardId] = useState(useParams().boardId || uuid());
   const [title] = useState("Roadmap");
   const [taskLists] = useState(["Backlog", "To do", "In progress", "Done"]);
   const [cards, dispatch] = useStateValue();
@@ -28,14 +29,14 @@ const Board = () => {
   // saving browserhistory on localStorage
   useEffect(() => {
     saveToLocalStorage(history.location.pathname.substring(1));
-  }, []);
+  }, [boardId]);
 
   //get Data from backend-mongodb and setCards
   useEffect(() => {
     getData(boardId).then((data) => {
       dispatch({ type: "SET_CARDS", payload: data.data.cards });
     });
-  }, []);
+  }, [boardId]);
 
   // Send Changes to backend-mongodb
   useEffect(() => {
@@ -66,6 +67,7 @@ const Board = () => {
           })}
         </div>
       </div>
+      <RecentPages setBoardId={setBoardId} />
     </DndProvider>
   );
 };

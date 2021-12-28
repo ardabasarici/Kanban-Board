@@ -37,4 +37,6 @@ app.get("/:boardId", async (req, res) => {
   }
 });
 
-app.listen(5000);
+app.listen(5000, () => {
+  console.log(`app listening at http://localhost:5000`);
+});
